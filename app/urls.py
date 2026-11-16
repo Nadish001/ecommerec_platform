@@ -16,7 +16,10 @@ urlpatterns = [
     path('addcat',addcat,name="addcat"),
     path('addcart/<int:pid>',addcart,name='addcart'),
     path('cart',viewcart,name='cart'),
-    path('remove/<int:pid>',remove,name='remove')
+    path('remove/<int:pid>',remove,name='remove'),
+    path('minus/<int:pid>',minus,name='minus'),
+    path('add/<int:pid>',add,name='add'),
+    path('clear',clear,name='clear')
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,32 +5,71 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="/static/css/shop.css">
+    <div class="main1">
+    {% if pro %} 
+<a href="{% url 'clear' %}"><button> Clear Cart </button> </a>
 
-    <div class="main1"> 
     {%for i in pro%}
         <div class="card">
             <img src="/ecommerce/{{i.img}}" alt="">
             <a href="{% url 'prodetails' i.id %}"><p>{{i.name}}</p></a>
             <p>price:₹{{i.price}}</i></p>
-            <p>Quantity: {{ i.qty }}</p>
-            <a href="{% url 'remove' i.id %}"><button>Remove</button></a>
-        </div>
-    {%endfor%}
-    </div>
-
-    {% endblock %}
-
 
             <div class="div">
                 <div class="count">
-                    <a href="">-</a>
-                    {{count}}
-                    <a href="">+</a>
+                    <a href="{% url 'minus' i.id%}">-</a>
+                    <p>{{ i.qty }}</p>
+                    <a href="{% url 'add' i.id %}">+</a>
                 </div>
                 <div class="remove">
-                        <a href="">Remove</a>
+                    <a href="{% url 'remove' i.id %}"><button>Remove</button></a>        
                 </div>
             </div>
+        </div>
+    {%endfor%}
+    {% else %}
+        <h1>
+            Cart is empty
+        </h1>
+    {%endif%}
+    </div>
+
+    <style>
+        .div{
+            width: 100%;
+            min-height: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .count{
+            width: 60%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            background-color: black;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            gap: 6px;
+        }
+        .count a{
+            color: white;
+            font-size: large;
+            font-weight: bolder;
+        }
+        .remove{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    {% endblock %}
+
+
+
 
 
 

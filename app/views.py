@@ -99,33 +99,54 @@ def deleteproduct(request,pid):
 
 def prodetails(request,pid):
     po = Products.objects.get(id = pid)
-    return render(request,"prodetails.html",{'po':po})
+    item = request.session.get('item', [])
+    count = dict(Counter(item))   
+    po.qty = count.get(po.id, 0)
+    return render(request,"prodetails.html",{'po':po,'count':count})
 
 def addcart(request,pid):
     pro = Products.objects.get(id=pid)
     i = request.session.get('item', [])
     i.append(pro.id)
     request.session['item'] = i
-    print(i)
     return redirect(prodetails,pid)
 
 def viewcart(request):
-    # item = request.session.get('item')
-
-    # pro = Products.objects.filter(id__in = item)
-    # return render(request,"cart.html",{'pro':pro})
     item = request.session.get('item', [])
     count = dict(Counter(item))           
     pro = Products.objects.filter(id__in=count.keys())
     for p in pro:
         p.qty = count[p.id]               
     return render(request, "cart.html", {'pro': pro, 'count': count})
+    # item = request.session.get('item')
+    # pro = Products.objects.filter(id__in = item)
+    # return render(request,"cart.html",{'pro':pro})
 
-def remove(request,pid):
+def minus(request,pid):
     i = request.session.get('item', [])
     if pid in i:
         i.remove(pid)
     request.session['item'] = i
     return redirect(viewcart)
+
+def remove(request, pid):
+    i = request.session.get('item', [])
+    i = [x for x in i if x != pid]
+    request.session['item'] = i
+    return redirect(viewcart)
+
+def add(request,pid):
+    pro = Products.objects.get(id=pid)
+    i = request.session.get('item', [])
+    i.append(pro.id)
+    request.session['item'] = i
+    return redirect(viewcart)
+def clear(request):
+    i = request.session.get('item', [])
+    if i:
+        i.clear()
+        request.session['item'] = i
+    return redirect(viewcart)
+
 
 
