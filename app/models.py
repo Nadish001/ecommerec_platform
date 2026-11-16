@@ -1,12 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=30)
-    des = models.TextField()
 
-    def __str__(self):
-        return self.name
 
 class Products(models.Model):
     name = models.CharField(max_length=30)
@@ -17,3 +12,14 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+    des = models.TextField()
+    def __str__(self):
+        return self.name
+
+
+

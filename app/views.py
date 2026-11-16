@@ -9,10 +9,26 @@ from django.contrib.auth import authenticate,logout,login
 
 
 
-def homepage(request):
+def homepage(request):    #view for homepage
     return render(request,'home1.html')
 
-def registerpage(request):
+
+def loginpage(request):      #view for login page   
+    if request.method =='POST':
+        n1=request.POST.get('n1')
+        p1=request.POST.get('p1')
+        # print(n1,p1)
+        user = authenticate(request,username=n1,password=p1)
+        if user:
+            login(request,user)
+            # messages.success(request,"user loggedIn successfully ")
+            return redirect(homepage)
+        else:
+            print("invalid creditential")
+    return render(request,'loginpage.html')
+
+
+def registerpage(request):                  #view for registerpage
     error={}
     if request.method =='POST':
         username=request.POST.get('username')
@@ -28,25 +44,11 @@ def registerpage(request):
         else:
             user = User.objects.create_user(username=username,email=email,password=password1)
             user.save()
-            # messages.success(request,"user registered successfully ")
             return redirect(homepage)
     else:
         return render(request,'registerpage.html')
 
 
-def loginpage(request):
-    if request.method =='POST':
-        n1=request.POST.get('n1')
-        p1=request.POST.get('p1')
-        # print(n1,p1)
-        user = authenticate(request,username=n1,password=p1)
-        if user:
-            login(request,user)
-            # messages.success(request,"user loggedIn successfully ")
-            return redirect(homepage)
-        else:
-            print("invalid creditential")
-    return render(request,'loginpage.html')
 
 def logoutpage(request):
     logout(request)
