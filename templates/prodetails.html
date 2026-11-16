@@ -17,19 +17,19 @@
            
         </div>
         <div class="f2">
-    {% if po.qty == 0 %}
-        <a class ='span' href="{% url 'addcart' po.id%}">add to cart</a>
-    {% else %}
-        <div class="span">
-                    <a href="{% url 'minus' po.id%}">-</a>
-                    <p>{{ po.qty }}</p>
-                    <a href="{% url 'add' po.id %}">+</a>
-        </div>
-    {% endif %}
-            <div class="aa">
-            <a href="{% url 'editpro' po.id %}">Edit</a>
-            <a href="{% url 'deletepro' po.id %}">Delete</a>
-            </div>
+            {% if po.qty == 0 %}
+                <a class ='span' href="{% url 'addcart' po.id%}">add to cart</a>
+            {% else %}
+                <div class="car">
+                            <a href="{% url 'minus' po.id%}">-</a>
+                            <p>{{ po.qty }}</p>
+                            <a href="{% url 'add' po.id %}">+</a>
+                </div>
+            {% endif %}
+                    <div class="aa">
+                    <a href="{% url 'editpro' po.id %}">Edit</a>
+                    <a href="{% url 'deletepro' po.id %}">Delete</a>
+                    </div>
         </div>
     </div>
 </div>

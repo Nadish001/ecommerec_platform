@@ -77,13 +77,33 @@
     flex-wrap: wrap;
 
 }
-
-.f2 span{
+.car{
     display: flex;
     width: 30%;
     height: 40px;
     color: white;
     background-color: black;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 10px;
+    gap: 20px;
+    /* padding-left: 10%;  */
+    flex-wrap: wrap;
+}
+.car a{
+    color: white;
+}
+
+.f2 .span{
+    display: flex;
+    width: 30%;
+    height: 40px;
+    color: white;
+    background-color: black;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     border: 1px solid white;
@@ -99,7 +119,7 @@ flex-direction: row;
 width: 30%;
 }
 
-.f2 a{
+.f2 .aa a{
     display: flex;
     width: 40%;
     height: 40px;
