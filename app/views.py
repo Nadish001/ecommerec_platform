@@ -8,7 +8,7 @@ from .forms import *
 from django.contrib.auth import authenticate,logout,login
 
 
-# Create your views here.
+
 def homepage(request):
     return render(request,'home1.html')
 
