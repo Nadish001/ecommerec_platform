@@ -1,0 +1,85 @@
+
+
+
+<div class="body">
+<form class="f1" method="post">
+    <h2>Login Page</h2>
+    {%csrf_token%}
+    <input type="text" placeholder="enter the username" name="n1">
+    <input type="password" name="p1" placeholder="enter the password">
+    <input type="submit" value="Log In">
+    <!-- {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="d2" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %} -->
+</form>
+</div>
+
+<style>
+      .d2{
+   
+        color: red;
+        font-size: 20px;
+        /* list-style-type: none; */
+    }
+    .f1{
+        background-color:aqua;
+        height: 400px;
+        width: 450px;
+        padding: 20px;
+        gap: 10px;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+    }
+
+    input[type='text']{
+        height: 40px;
+        width: 320px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    input[type='password']{
+        height: 40px;
+        width: 320px;
+        border: 1px solid black;
+        border-radius: 5px;
+
+    }
+    input[type='submit']{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 25px; */
+        width: 80px;
+        background-color:rgb(7, 130, 196);
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    input::placeholder{
+        padding-left: 5px;
+        color:black
+    }
+    .body{
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+</style>
+
+

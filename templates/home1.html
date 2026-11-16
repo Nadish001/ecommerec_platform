@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+      <div class="content">
+
+
+        <div class="con2">
+          <div class="right">
+            <h5>SUMMER 2020</h5>
+            <h1>NEW COLLECTION</h1>
+            <p>
+              We know how large objects will act,<br />
+              but things on a small scale.
+            </p>
+            <a href="{% url 'shop' %}">
+            <button class="shop">SHOP NOW</button>
+            </a>
+          </div>
+
+          <div class="left">
+            <img src="/static/images/col-md-6.png" alt="New fashion collection" />
+          </div>
+        </div>
+
+
+
+        <div class="con4">
+          <div class="con4-left">
+            <img src="/static/images/model-left.png" alt="White fashion outfit" />
+          </div>
+          <div class="con4-text">
+            <h5>SUMMER 2020</h5>
+            <h1>Multicoloured<br />Tie-dye Sweater</h1>
+            <p>We know how large objects will act,</p>
+   
+            <a href="{% url 'shop' %}">
+            <button class="con4-shop">SHOP NOW</button>
+            </a>
+          </div>
+          <div class="con4-right">
+            <img src="/static/images/model-right.png" alt="Pink sweater collection" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+ {% endblock %}

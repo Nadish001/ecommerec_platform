@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/prodetails.css">
+<div class="main1">
+    <div class="im">
+        <img src="/ecommerce/{{po.img}}" alt="" >
+    </div>
+    <div class="details">
+        <div class="f1">
+            <h1 class='b1'>{{po.name}}</h1>
+            <div class="hhh">
+            <p>Product_des:</p>
+            <h3>{{po.des}}</h5>
+            </div>
+            <p>Price:{{po.price}}</p>
+           
+        </div>
+        <div class="f2">
+        <a class ='span' href="{% url 'addcart' po.id%}">
+            add to cart
+        </a>
+            <div class="aa">
+            <a href="{% url 'editpro' po.id %}">Edit</a>
+            <a href="{% url 'deletepro' po.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
